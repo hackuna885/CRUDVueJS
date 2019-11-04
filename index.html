@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>CRUD VueJS</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/sweetalert2.min.css">
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12 col-md-8 mx-auto">
+				<div class="text-center mt-5">
+					<h2 class="text-white rounded">
+						<span class="badge badge-success p-3">CRUD con VueJS</span>
+					</h2>	
+				</div>
+				<br>
+				<div id="appMoviles">
+					<div class="row">
+						<div class="col">
+							<button @click="btnAlta" class="btn btn-success"><i class="fas fa-plus-circle 2xs"></i></button>
+						</div>
+						<div class="col text-left">
+							<h5>Stock Total: <span class="badge badge-success">{{totalStock}}</span></h5>
+						</div>
+					</div>
+
+					<!-- //tabla -->
+
+					<div class="row mt-5">
+						<div class="col-12">
+							<table class="table table-striped">
+								<thead>
+									<tr class="bg-primary text-white">
+										<th>ID</th>
+										<th>Marca</th>
+										<th>Modelo</th>
+										<th>Stock</th>
+										<th>Acciones</th>
+									</tr>
+								</thead>
+								<tbody>
+										<tr v-for="(movil,indice) of moviles">                                
+											<td>{{movil.id}}</td>                                
+											<td>{{movil.marca}}</td>
+											<td>{{movil.modelo}}</td>
+											<td>
+												<div class="col-md-8">
+													<input type="number" v-model.number="movil.stock" class="form-control text-right" disabled>
+												</div>    
+											</td>
+											<td>
+											<div class="btn-group" role="group">
+												<button class="btn btn-secondary" title="Editar" @click="btnEditar(movil.id, movil.marca, movil.modelo, movil.stock)">
+													<i class="fas fa-pencil-alt"></i>
+												</button>    
+												<button class="btn btn-danger" title="Eliminar" @click="btnBorrar(movil.id)">
+													<i class="fas fa-trash-alt"></i>
+												</button>      
+											</div>
+											</td>
+										</tr>    
+									</tbody>
+							</table>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script src="js/jquery-3.3.1.slim.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/vue.js"></script>
+	<script src="js/axios.min.js"></script>
+	<script src="js/sweetalert2.min.js"></script>
+	<script src="js/main.js"></script>
+</body>
+</html>
